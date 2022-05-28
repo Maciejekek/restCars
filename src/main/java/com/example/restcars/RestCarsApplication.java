@@ -21,22 +21,22 @@ public class RestCarsApplication implements CommandLineRunner {
     private final CarService carService;
     @Override
     public void run(String... args) throws Exception {
-        Car car = new Car();
-        car.setMark("FSO");
-        car.setModel("Polonez");
-        car.setColor("Red");
-        carService.save(car);
-
-        Car car2 = new Car();
-        car2.setMark("Lada");
-        car2.setModel("Lada");
-        car2.setColor("White");
-        carService.save(car);
-
-        Car car3 = new Car();
-        car3.setMark("FCS");
-        car3.setModel("Zuk");
-        car3.setColor("Green");
-        carService.save(car);
+//        Car car = new Car();
+//        car.setMark("FSO");
+//        car.setModel("Polonez");
+//        car.setColor("Red");
+//        carService.save(car);
+//
+//        Car car2 = new Car();
+//        car2.setMark("Lada");
+//        car2.setModel("Lada");
+//        car2.setColor("White");
+//        carService.save(car2);
+//
+//        Car car3 = new Car();
+//        car3.setMark("FCS");
+//        car3.setModel("Zuk");
+//        car3.setColor("Green");
+//        carService.save(car3);
     }
 }

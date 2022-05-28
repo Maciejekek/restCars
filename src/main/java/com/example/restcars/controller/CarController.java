@@ -11,7 +11,7 @@ import java.util.List;
 /*
 •do pobierania wszystkich pozycji
 •do pobierania elementu po jego id
-•do pobierania elementów w określonym kolorze (query)   todo
+•do pobierania elementów w określonym kolorze (query)
 •do dodawania pozycji
 •do modyfikowania pozycji
 •do modyfikowania jednego z pól pozycji (kolor)         todo
@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/app")
 public class CarController {
 
     public CarController(CarService carService) {
@@ -38,13 +38,13 @@ public class CarController {
         return carService.save(car);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable Long id){
         Car car = carService.findById(id);
         return ResponseEntity.ok(car);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car carDetails){
         Car updateCar = carService.findById(id);
 
@@ -55,10 +55,16 @@ public class CarController {
         return ResponseEntity.ok(updateCar);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCar(@PathVariable Long id){
         Car car = carService.findById(id);
         return carService.delete(car);
+    }
+
+    @GetMapping("/color/{color}")
+    public ResponseEntity<List<Car>> getCarsByColors(@PathVariable String color){
+        List<Car> carList = carService.findByColor(color);
+        return ResponseEntity.ok(carList);
     }
 
 

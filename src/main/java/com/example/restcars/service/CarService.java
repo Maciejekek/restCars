@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService{
@@ -34,6 +36,13 @@ public class CarService{
     public ResponseEntity<HttpStatus> delete(Car car){
         carRepository.delete(car);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    public List<Car> findByColor(String color){
+        List<Car> carList = carRepository.findAll().stream()
+                .filter(g -> g.getColor().toLowerCase() == color.toLowerCase(Locale.ROOT))
+                .collect(Collectors.toList());
+    return carList;
     }
 
 
