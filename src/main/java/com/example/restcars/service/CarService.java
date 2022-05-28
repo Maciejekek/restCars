@@ -41,7 +41,7 @@ public class CarService{
     public List<Car> findByColor(String color){
         List<Car> carList = carRepository.findAll()
                 .stream()
-                .filter(g -> g.getColor().toLowerCase(Locale.ROOT) == color.toLowerCase(Locale.ROOT))
+                .filter(car -> car.getColor().equalsIgnoreCase(color))
                 .collect(Collectors.toList());
     return carList;
     }
