@@ -14,7 +14,7 @@ import java.util.List;
 •do pobierania elementów w określonym kolorze (query)
 •do dodawania pozycji
 •do modyfikowania pozycji
-•do modyfikowania jednego z pól pozycji (kolor)         todo
+•do modyfikowania jednego z pól pozycji (kolor)
 •do usuwania jeden pozycji
  */
 
@@ -61,10 +61,19 @@ public class CarController {
         return carService.delete(car);
     }
 
-    @GetMapping("/color/{color}")
+    @GetMapping("/{color}")
     public ResponseEntity<List<Car>> getCarsByColors(@PathVariable String color){
         List<Car> carList = carService.findByColor(color);
         return ResponseEntity.ok(carList);
+    }
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Car> updateCarColor(@PathVariable Long id, @RequestBody String color){
+        Car updateCar = carService.findById(id);
+
+        updateCar.setColor(color);
+
+        return ResponseEntity.ok(updateCar);
     }
 
 
