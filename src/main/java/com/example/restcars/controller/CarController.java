@@ -61,9 +61,9 @@ public class CarController {
         return carService.delete(car);
     }
 
-    @GetMapping("/color/{color}")
-    public ResponseEntity<List<Car>> getCarsByColors(@PathVariable String color){
-        List<Car> carList = carService.findByColor(color);
+    @GetMapping("/color/{id}")
+    public ResponseEntity<List<Car>> getCarsByColors(@PathVariable String id){
+        List<Car> carList = carService.findByColor(id);
         return ResponseEntity.ok(carList);
     }
 
