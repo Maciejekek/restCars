@@ -52,6 +52,8 @@ public class CarController {
         updateCar.setModel(carDetails.getModel());
         updateCar.setColor(carDetails.getColor());
 
+        carService.save(updateCar);
+
         return ResponseEntity.ok(updateCar);
     }
 
