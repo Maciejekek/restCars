@@ -67,11 +67,13 @@ public class CarController {
         return ResponseEntity.ok(carList);
     }
 
-    @PutMapping("/edit/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Car> updateCarColor(@PathVariable Long id, @RequestBody String color){
         Car updateCar = carService.findById(id);
 
         updateCar.setColor(color);
+
+        carService.save(updateCar);
 
         return ResponseEntity.ok(updateCar);
     }
